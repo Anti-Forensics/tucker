@@ -1,21 +1,26 @@
+__version__ = "0.0.1"
+__author__ = "Jesse Shelley"
+__url__ = "https://github.com/anti-forensics/tucker"
+
 import argparse
 
 
 class Tucker:
-    def __init__(self, zip_path: str, jpg_path: str, output_path: str):
+    def __init__(self, zip_path: str, jpg_path: str, output_path: str) -> None:
         self.zip_file_path = zip_path
         self.jpg_file_path = jpg_path
         self.output_file_path = output_path
 
-    def open_zip(self):
+    def open_zip(self) -> bytes:
         with open(self.zip_file_path, 'rb') as zip_obj:
+            print(type(zip_obj.read()))
             return zip_obj.read()
 
-    def open_jpg(self):
+    def open_jpg(self) -> bytes:
         with open(self.jpg_file_path, 'rb') as jpg_obj:
             return jpg_obj.read()
 
-    def combine(self):
+    def combine(self) -> None:
         zip_file_data = self.open_zip()
         jpg_file_data = self.open_jpg()
 
@@ -27,7 +32,7 @@ class Tucker:
         print("[+] Data combined!")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Hide a zip file at the end of a jpg.")
     parser.add_argument('--jpg', required=True, dest="jpg_file_path")
     parser.add_argument('--zip', required=True, dest="zip_file_path")
@@ -37,6 +42,7 @@ def main():
     tucker = Tucker(args.zip_file_path, args.jpg_file_path, args.output_file_path)
 
     tucker.combine()
+
 
 if __name__ == "__main__":
     main()
