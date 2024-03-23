@@ -1,7 +1,3 @@
-__version__ = "0.0.1"
-__author__ = "Jesse Shelley"
-__url__ = "https://github.com/anti-forensics/tucker"
-
 import argparse
 
 
