@@ -13,7 +13,6 @@ class Tucker:
 
     def open_zip(self) -> bytes:
         with open(self.zip_file_path, 'rb') as zip_obj:
-            print(type(zip_obj.read()))
             return zip_obj.read()
 
     def open_jpg(self) -> bytes:
